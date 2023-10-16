@@ -15,6 +15,11 @@ public class BSTTest {
     }
 
     @Test
+    public void successor() {
+        assertEquals(5, tree.successor(4));
+    }
+
+    @Test
     public void size() {
         assertEquals(5, tree.size());
     }
@@ -64,4 +69,8 @@ public class BSTTest {
         assertEquals(8, tree.maximum());
     }
 
+    @Test
+    public void format() {
+        assertEquals("2, 4, 5, 7, 8", tree.format());
+    }
 }

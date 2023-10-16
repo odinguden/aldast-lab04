@@ -1,5 +1,7 @@
 package no.ntnu.idata2302.lab04;
 
+import java.util.ArrayList;
+
 public class BST {
 
 	public static BST fromValues(int... values) {
@@ -75,7 +77,7 @@ public class BST {
 
 	int maximum() {
 		if (this.hasRight()) {
-			return this.right.minimum();
+			return this.right.maximum();
 		} else {
 			return this.value;
 		}
@@ -169,8 +171,17 @@ public class BST {
 	}
 
 	public String format() {
-		// TODO: Implement this operation
-		throw new RuntimeException("Not yet implemented!");
+		String retval = "";
+		
+		if (this.hasLeft()) {
+			retval += this.left.format() + ", ";
+		}
+		retval += this.value;
+		if (this.hasRight()) {
+			retval += ", " + this.right.format();
+		}
+		
+		return retval;
 	}
 
 }
