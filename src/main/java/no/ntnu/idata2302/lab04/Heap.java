@@ -58,16 +58,50 @@ public class Heap {
 	public int takeMinimum() {
 		int minimum = array.get(0);
 
-		
+		delete(0);
 
 		return minimum;
 	}
+
+	public void delete(int pos) {
+		swap(pos, array.size()-1);
+		array.remove(array.size()-1);
+		bubbleDown(pos);
+	} 
+
+	public void bubbleDown(int pos){
+		int left = leftChildOf(pos);
+		int right = rightChildOf(pos);
+
+		if (right > array.size() -1 ) {
+			return;
+		}
+
+		if (array.get(pos) < array.get(left) && array.get(pos) < array.get(right)) {
+			return;
+		} else {
+			if (array.get(left) < array.get(right)) {
+				swap(pos, left);
+				bubbleDown(left);
+			} else {
+				swap(pos, right);
+				bubbleDown(right);
+			}
+		}
+	}
+
 
 	public void decreaseKey(int i, int k) {
 		// TODO: Implement this operation
 		throw new RuntimeException("Not yet implemented");
 	}
 
+	/**
+	 * returns the parent of a given position 
+	 * 
+	 * @param index 
+	 * @return the parent of the index
+	 */
 	private int parentOf(int index) {
 		return index / 2;
 	}
