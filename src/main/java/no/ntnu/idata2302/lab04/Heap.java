@@ -90,10 +90,31 @@ public class Heap {
 		}
 	}
 
-
+	/**
+	 * set the element at position i to the value k and restore the heap property. 
+	 * It throws an error if k is greater or equal to the element stored at position i.
+	 * @param i
+	 * @param k
+	 */
 	public void decreaseKey(int i, int k) {
-		// TODO: Implement this operation
-		throw new RuntimeException("Not yet implemented");
+		if (array.get(i ) <= k) {
+			throw new IllegalArgumentException("k is greater or equal to the element stored at position i.");
+		} else {
+			array.set(i, k);
+			bubbleUp(i);
+		}
+	}
+
+	public void bubbleUp(int pos){
+		if (pos == 0) {
+			return;
+		}
+
+		if (array.get(pos) < array.get(parentOf(pos))) {
+			swap(pos, parentOf(pos));
+			bubbleUp(parentOf(pos));
+		}
+
 	}
 
 	/**

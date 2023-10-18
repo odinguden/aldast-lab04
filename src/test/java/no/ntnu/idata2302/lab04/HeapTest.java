@@ -1,7 +1,6 @@
 package no.ntnu.idata2302.lab04;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class HeapTest {
@@ -44,5 +43,17 @@ public class HeapTest {
 
         assertEquals(9, (int) minimum);
     }
+
+    @Test
+    public void decreaseKey(){
+        var heap = Heap.fromValues(10, 20, 5, 23, 9);
+
+        heap.decreaseKey(3, 4);
+
+        assertEquals(4, heap.takeMinimum());
+
+    }
+
+    
 
 }
